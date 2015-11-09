@@ -17,7 +17,7 @@ class facette (
     ensure   => present,
     target   => '/etc/default/facette',
     variable => 'ENABLED',
-    value    => 'true',
+    value    => 'true', # lint:ignore:quoted_boolean
     require  => Package['facette'],
     notify   => Service['facette'],
   }
