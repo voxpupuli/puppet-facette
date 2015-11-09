@@ -1,0 +1,7 @@
+.*.sw?
+.bundle
+pkg
+spec/fixtures
+.rspec_system
+.vagrant
+Gemfile.lock
