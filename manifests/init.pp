@@ -11,8 +11,9 @@ class facette (
   $_file_opts = { 'owner' => 'root', 'group' => 'root', 'mode' => '0644' }
 
   package { 'facette':
-    ensure => $_state['package'],
-    notify => Service['facette'],
+    ensure  => $_state['package'],
+    notify  => Service['facette'],
+    require => Apt::Ppa['ppa:facette/ppa'],
   }
 
   shellvar { 'enable facette':

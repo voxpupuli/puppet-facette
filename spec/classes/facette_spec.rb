@@ -22,6 +22,7 @@ describe 'facette' do
             it { is_expected.to contain_package('facette').with({
                 :ensure => 'installed',
                 :notify => 'Service[facette]',
+                :require => 'Apt::Ppa[ppa:facette/ppa]',
             })}
 
             it { is_expected.to contain_shellvar('enable facette').with({
