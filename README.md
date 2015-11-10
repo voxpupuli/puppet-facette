@@ -45,8 +45,9 @@ In order to get access to RRD data outputted by collectd:
 class { 'facette':
     providers => { 'collectd' => {
                     'connector' => {
-                        'path' => '/var/lib/collectd/rrd',
-                        'type' => 'rrd',
+                        'path'    => '/var/lib/collectd/rrd',
+                        'pattern' => '(?P<source>[^/]+)/(?P<metric>.+).rrd',
+                        'type'    => 'rrd',
                  }}},
 }
 ```
@@ -58,6 +59,7 @@ facette::providers:
   collectd:
     connector:
       path: '/var/lib/collectd/rrd'
+      pattern: '(?P<source>[^/]+)/(?P<metric>.+).rrd'
       type: 'rrd'
 ```
 
@@ -68,6 +70,7 @@ the following content:
 {
     "connector": {
         "path": "/var/lib/collectd/rrd",
+        "pattern": "(?P<source>[^/]+)/(?P<metric>.+).rrd",
         "type": "rrd"
     }
 }
