@@ -20,7 +20,7 @@ describe 'facette' do
             it { is_expected.to contain_apt__ppa('ppa:facette/ppa')}
 
             it { is_expected.to contain_package('facette').with({
-                :ensure => 'latest',
+                :ensure => 'installed',
                 :notify => 'Service[facette]',
             })}
 
@@ -58,6 +58,16 @@ describe 'facette' do
                 /"pid_file": ".+"/
             )
             }
+        end
+
+        context 'with package state set to purged' do
+            let(:params) { { :state => { 'package' => 'purged' } } }
+            it { is_expected.to contain_package('facette').with_ensure('purged') }
+        end
+
+        context 'with service state set to stopped' do
+            let(:params) { { :state => { 'service' => 'stopped' } } }
+            it { is_expected.to contain_service('facette').with_ensure('stopped') }
         end
 
         context 'with config where base_dir is set to var' do

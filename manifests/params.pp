@@ -10,4 +10,9 @@ class facette::params {
     'data_dir'      => '/var/lib/facette',
     'pid_file'      => '/var/run/facette/facette.pid',
   }
+
+  $state_defaults = {
+    'package' => 'installed',
+    'service' => 'running',
+  }
 }

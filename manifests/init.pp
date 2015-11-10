@@ -1,15 +1,17 @@
 class facette (
   Optional[Hash] $config = undef,
   Optional[Hash[String, Hash]] $providers = undef,
+  Optional[Hash] $state = undef,
 ) inherits facette::params {
 
   apt::ppa { 'ppa:facette/ppa': }
 
   $_config = merge($::facette::config_defaults, $config)
+  $_state = merge($::facette::state_defaults, $state)
   $_file_opts = { 'owner' => 'root', 'group' => 'root', 'mode' => '0644' }
 
   package { 'facette':
-    ensure => latest,
+    ensure => $_state['package'],
     notify => Service['facette'],
   }
 
@@ -23,7 +25,7 @@ class facette (
   }
 
   service { 'facette':
-    ensure => running,
+    ensure => $_state['service'],
     enable => true,
   }
 
