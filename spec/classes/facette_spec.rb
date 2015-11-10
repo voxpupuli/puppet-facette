@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'facette' do
     let :pre_condition do
-        'class { "apt": }'
+        'include apt'
     end
 
     describe 'on Ubuntu' do
