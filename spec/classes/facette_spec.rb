@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe 'facette' do
     let :pre_condition do
