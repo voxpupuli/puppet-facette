@@ -13,7 +13,7 @@ describe 'facette' do
             'lsbdistdescription'  => 'Ubuntu 14.04.3 LTS',
             'lsbdistid'           => 'Ubuntu',
             :osfamily             => 'Debian',
-            :operatingsystem      => 'Ubuntu',
+            :operatingsystem      => 'Ubuntu'
         } }
 
         context 'defaults' do
@@ -22,7 +22,7 @@ describe 'facette' do
             it { is_expected.to contain_package('facette').with({
                 ensure: 'installed',
                 notify: 'Service[facette]',
-                require: 'Apt::Ppa[ppa:facette/ppa]',
+                require: 'Apt::Ppa[ppa:facette/ppa]'
             })}
 
             it { is_expected.to contain_shellvar('enable facette').with({
@@ -31,12 +31,12 @@ describe 'facette' do
                 variable: 'ENABLED',
                 value: 'true',
                 require: 'Package[facette]',
-                notify: 'Service[facette]',
+                notify: 'Service[facette]'
             })}
 
             it { is_expected.to contain_service('facette').with({
                 ensure: 'running',
-                enable: true,
+                enable: true
             })}
 
             it { is_expected.to contain_file('facette.json').with({
@@ -46,7 +46,7 @@ describe 'facette' do
                 notify: 'Service[facette]',
                 owner: 'root',
                 group: 'root',
-                mode: '0644',
+                mode: '0644'
             }).with_content(
                 %r{"bind": ".+"}
             ).with_content(
@@ -91,7 +91,7 @@ describe 'facette' do
                 providers: { 'collectd' => {
                     'connector' => {
                         'path' => '/var/lib/collectd/rrd',
-                        'type' => 'rrd',
+                        'type' => 'rrd'
                 }}}
             }}
             it { is_expected.to contain_file('facette-collectd.json').with({
@@ -101,7 +101,7 @@ describe 'facette' do
                 notify: 'Service[facette]',
                 owner: 'root',
                 group: 'root',
-                mode: '0644',
+                mode: '0644'
             }).with_content(
                 %r{"connector":}
             ).with_content(
@@ -118,12 +118,12 @@ describe 'facette' do
                 'collectd' => {
                     'connector' => {
                         'path' => '/var/lib/collectd/rrd',
-                        'type' => 'rrd',
+                        'type' => 'rrd'
                 }},
                 'influxdb' => {
                     'connector' => {
                         'type' => 'influxdb',
-                        'database' => 'webapps',
+                        'database' => 'webapps'
                 }}
             }}}
             it { is_expected.to contain_file('facette-collectd.json').with({
@@ -133,7 +133,7 @@ describe 'facette' do
                 notify: 'Service[facette]',
                 owner: 'root',
                 group: 'root',
-                mode: '0644',
+                mode: '0644'
             }).with_content(
                 %r{"connector":}
             ).with_content(
@@ -149,7 +149,7 @@ describe 'facette' do
                 notify: 'Service[facette]',
                 owner: 'root',
                 group: 'root',
-                mode: '0644',
+                mode: '0644'
             }).with_content(
                 %r{"connector":}
             ).with_content(
@@ -169,7 +169,7 @@ describe 'facette' do
             'lsbdistdescription'  => 'Ubuntu 14.04.3 LTS',
             'lsbdistid'           => 'Banana',
             :osfamily             => 'Debian',
-            :operatingsystem      => 'Ubuntu',
+            :operatingsystem      => 'Ubuntu'
         } }
         it do
             expect { subject.call }.to raise_error(Puppet::Error, %r{This module only supports Ubuntu})
