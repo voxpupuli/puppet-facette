@@ -24,7 +24,7 @@ describe 'facette class' do
       it { should be_running }
     end
 
-    describe port(12003) do
+    describe port(12_003) do
       it { should be_listening }
     end
   end
