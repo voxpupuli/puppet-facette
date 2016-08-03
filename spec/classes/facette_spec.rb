@@ -19,35 +19,27 @@ describe 'facette' do
         context 'defaults' do
             it { is_expected.to contain_apt__ppa('ppa:facette/ppa')}
 
-            it { is_expected.to contain_package('facette').with({
-                ensure: 'installed',
+            it { is_expected.to contain_package('facette').with(                ensure: 'installed',
                 notify: 'Service[facette]',
-                require: 'Apt::Ppa[ppa:facette/ppa]'
-            })}
+                require: 'Apt::Ppa[ppa:facette/ppa]')}
 
-            it { is_expected.to contain_shellvar('enable facette').with({
-                ensure: 'present',
+            it { is_expected.to contain_shellvar('enable facette').with(                ensure: 'present',
                 target: '/etc/default/facette',
                 variable: 'ENABLED',
                 value: 'true',
                 require: 'Package[facette]',
-                notify: 'Service[facette]'
-            })}
+                notify: 'Service[facette]')}
 
-            it { is_expected.to contain_service('facette').with({
-                ensure: 'running',
-                enable: true
-            })}
+            it { is_expected.to contain_service('facette').with(                ensure: 'running',
+                enable: true)}
 
-            it { is_expected.to contain_file('facette.json').with({
-                ensure: 'file',
+            it { is_expected.to contain_file('facette.json').with(                ensure: 'file',
                 path: '/etc/facette/facette.json',
                 require: 'Package[facette]',
                 notify: 'Service[facette]',
                 owner: 'root',
                 group: 'root',
-                mode: '0644'
-            }).with_content(
+                mode: '0644').with_content(
                 %r{"bind": ".+"}
             ).with_content(
                 %r{"base_dir": ".+"}
@@ -94,15 +86,13 @@ describe 'facette' do
                         'type' => 'rrd'
                 }}}
             }}
-            it { is_expected.to contain_file('facette-collectd.json').with({
-                ensure: 'file',
+            it { is_expected.to contain_file('facette-collectd.json').with(                ensure: 'file',
                 path: '/etc/facette/providers/collectd.json',
                 require: 'Package[facette]',
                 notify: 'Service[facette]',
                 owner: 'root',
                 group: 'root',
-                mode: '0644'
-            }).with_content(
+                mode: '0644').with_content(
                 %r{"connector":}
             ).with_content(
                 /"path": "\/var\/lib\/collectd\/rrd"/
@@ -126,15 +116,13 @@ describe 'facette' do
                         'database' => 'webapps'
                 }}
             }}}
-            it { is_expected.to contain_file('facette-collectd.json').with({
-                ensure: 'file',
+            it { is_expected.to contain_file('facette-collectd.json').with(                ensure: 'file',
                 path: '/etc/facette/providers/collectd.json',
                 require: 'Package[facette]',
                 notify: 'Service[facette]',
                 owner: 'root',
                 group: 'root',
-                mode: '0644'
-            }).with_content(
+                mode: '0644').with_content(
                 %r{"connector":}
             ).with_content(
                 /"path": "\/var\/lib\/collectd\/rrd"/
@@ -142,15 +130,13 @@ describe 'facette' do
                 %r{"type": "rrd"}
             )
             }
-            it { is_expected.to contain_file('facette-influxdb.json').with({
-                ensure: 'file',
+            it { is_expected.to contain_file('facette-influxdb.json').with(                ensure: 'file',
                 path: '/etc/facette/providers/influxdb.json',
                 require: 'Package[facette]',
                 notify: 'Service[facette]',
                 owner: 'root',
                 group: 'root',
-                mode: '0644'
-            }).with_content(
+                mode: '0644').with_content(
                 %r{"connector":}
             ).with_content(
                 %r{"database": "webapps"}
