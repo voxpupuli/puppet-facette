@@ -1,23 +1,23 @@
 require 'spec_helper'
 
 describe 'facette' do
-    let :pre_condition do
-        'include apt'
-    end
+  let :pre_condition do
+    'include apt'
+  end
 
     describe 'on Ubuntu' do
-        let(:facts) { {
-            'lsbdistcodename'     => 'trusty',
-            'lsbdistrelease'      => '14.04',
-            'lsbmajdistrelease'   => '14.04',
-            'lsbdistdescription'  => 'Ubuntu 14.04.3 LTS',
-            'lsbdistid'           => 'Ubuntu',
-            :osfamily             => 'Debian',
-            :operatingsystem      => 'Ubuntu'
-        } }
+      let(:facts) { {
+          'lsbdistcodename'     => 'trusty',
+          'lsbdistrelease'      => '14.04',
+          'lsbmajdistrelease'   => '14.04',
+          'lsbdistdescription'  => 'Ubuntu 14.04.3 LTS',
+          'lsbdistid'           => 'Ubuntu',
+          :osfamily             => 'Debian',
+          :operatingsystem      => 'Ubuntu'
+      } }
 
         context 'defaults' do
-            it { is_expected.to contain_apt__ppa('ppa:facette/ppa')}
+          it { is_expected.to contain_apt__ppa('ppa:facette/ppa')}
 
             it { is_expected.to contain_package('facette').with(                ensure: 'installed',
                 notify: 'Service[facette]',
@@ -54,17 +54,17 @@ describe 'facette' do
         end
 
         context 'with package state set to purged' do
-            let(:params) { { state: { 'package' => 'purged' } } }
+          let(:params) { { state: { 'package' => 'purged' } } }
             it { is_expected.to contain_package('facette').with_ensure('purged') }
         end
 
         context 'with service state set to stopped' do
-            let(:params) { { state: { 'service' => 'stopped' } } }
+          let(:params) { { state: { 'service' => 'stopped' } } }
             it { is_expected.to contain_service('facette').with_ensure('stopped') }
         end
 
         context 'with config where base_dir is set to var' do
-            let(:params) { { config: { 'base_dir' => '/var' } } }
+          let(:params) { { config: { 'base_dir' => '/var' } } }
             it { is_expected.to contain_file('facette.json').with_content(
                 %r{"bind": ".+"}
             ).with_content(
@@ -79,13 +79,13 @@ describe 'facette' do
         end
 
         context 'with single provider' do
-            let(:params) { {
-                providers: { 'collectd' => {
-                    'connector' => {
-                        'path' => '/var/lib/collectd/rrd',
-                        'type' => 'rrd'
-                }}}
-            }}
+          let(:params) { {
+              providers: { 'collectd' => {
+                  'connector' => {
+                      'path' => '/var/lib/collectd/rrd',
+                      'type' => 'rrd'
+              }}}
+          }}
             it { is_expected.to contain_file('facette-collectd.json').with(                ensure: 'file',
                 path: '/etc/facette/providers/collectd.json',
                 require: 'Package[facette]',
@@ -103,19 +103,19 @@ describe 'facette' do
         end
 
         context 'with multiple providers' do
-            let(:params) { {
-                providers: {
-                'collectd' => {
-                    'connector' => {
-                        'path' => '/var/lib/collectd/rrd',
-                        'type' => 'rrd'
-                }},
-                'influxdb' => {
-                    'connector' => {
-                        'type' => 'influxdb',
-                        'database' => 'webapps'
-                }}
-            }}}
+          let(:params) { {
+              providers: {
+              'collectd' => {
+                  'connector' => {
+                      'path' => '/var/lib/collectd/rrd',
+                      'type' => 'rrd'
+              }},
+              'influxdb' => {
+                  'connector' => {
+                      'type' => 'influxdb',
+                      'database' => 'webapps'
+              }}
+          }}}
             it { is_expected.to contain_file('facette-collectd.json').with(                ensure: 'file',
                 path: '/etc/facette/providers/collectd.json',
                 require: 'Package[facette]',
@@ -148,17 +148,17 @@ describe 'facette' do
     end
 
     describe 'on unsupported' do
-        let(:facts) { {
-            'lsbdistcodename'     => 'trusty',
-            'lsbdistrelease'      => '14.04',
-            'lsbmajdistrelease'   => '14.04',
-            'lsbdistdescription'  => 'Ubuntu 14.04.3 LTS',
-            'lsbdistid'           => 'Banana',
-            :osfamily             => 'Debian',
-            :operatingsystem      => 'Ubuntu'
-        } }
+      let(:facts) { {
+          'lsbdistcodename'     => 'trusty',
+          'lsbdistrelease'      => '14.04',
+          'lsbmajdistrelease'   => '14.04',
+          'lsbdistdescription'  => 'Ubuntu 14.04.3 LTS',
+          'lsbdistid'           => 'Banana',
+          :osfamily             => 'Debian',
+          :operatingsystem      => 'Ubuntu'
+      } }
         it do
-            expect { subject.call }.to raise_error(Puppet::Error, %r{This module only supports Ubuntu})
+          expect { subject.call }.to raise_error(Puppet::Error, %r{This module only supports Ubuntu})
         end
     end
 end
