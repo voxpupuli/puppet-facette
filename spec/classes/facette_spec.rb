@@ -48,15 +48,15 @@ describe 'facette' do
                 group: 'root',
                 mode: '0644',
             }).with_content(
-                /"bind": ".+"/
+                %r{"bind": ".+"}
             ).with_content(
-                /"base_dir": ".+"/
+                %r{"base_dir": ".+"}
             ).with_content(
-                /"providers_dir": ".+"/
+                %r{"providers_dir": ".+"}
             ).with_content(
-                /"data_dir": ".+"/
+                %r{"data_dir": ".+"}
             ).with_content(
-                /"pid_file": ".+"/
+                %r{"pid_file": ".+"}
             )
             }
         end
@@ -74,15 +74,15 @@ describe 'facette' do
         context 'with config where base_dir is set to var' do
             let(:params) { { config: { 'base_dir' => '/var' } } }
             it { is_expected.to contain_file('facette.json').with_content(
-                /"bind": ".+"/
+                %r{"bind": ".+"}
             ).with_content(
                 /"base_dir": "\/var"/
             ).with_content(
-                /"providers_dir": ".+"/
+                %r{"providers_dir": ".+"}
             ).with_content(
-                /"data_dir": ".+"/
+                %r{"data_dir": ".+"}
             ).with_content(
-                /"pid_file": ".+"/
+                %r{"pid_file": ".+"}
             )}
         end
 
@@ -103,11 +103,11 @@ describe 'facette' do
                 group: 'root',
                 mode: '0644',
             }).with_content(
-                /"connector":/
+                %r{"connector":}
             ).with_content(
                 /"path": "\/var\/lib\/collectd\/rrd"/
             ).with_content(
-                /"type": "rrd"/
+                %r{"type": "rrd"}
             )
             }
         end
@@ -135,11 +135,11 @@ describe 'facette' do
                 group: 'root',
                 mode: '0644',
             }).with_content(
-                /"connector":/
+                %r{"connector":}
             ).with_content(
                 /"path": "\/var\/lib\/collectd\/rrd"/
             ).with_content(
-                /"type": "rrd"/
+                %r{"type": "rrd"}
             )
             }
             it { is_expected.to contain_file('facette-influxdb.json').with({
@@ -151,11 +151,11 @@ describe 'facette' do
                 group: 'root',
                 mode: '0644',
             }).with_content(
-                /"connector":/
+                %r{"connector":}
             ).with_content(
-                /"database": "webapps"/
+                %r{"database": "webapps"}
             ).with_content(
-                /"type": "influxdb"/
+                %r{"type": "influxdb"}
             )
             }
         end
@@ -172,7 +172,7 @@ describe 'facette' do
             :operatingsystem      => 'Ubuntu',
         } }
         it do
-            expect { subject.call }.to raise_error(Puppet::Error, /This module only supports Ubuntu/)
+            expect { subject.call }.to raise_error(Puppet::Error, %r{This module only supports Ubuntu})
         end
     end
 end
