@@ -20,33 +20,33 @@ describe 'facette' do
             it { is_expected.to contain_apt__ppa('ppa:facette/ppa')}
 
             it { is_expected.to contain_package('facette').with({
-                :ensure => 'installed',
-                :notify => 'Service[facette]',
-                :require => 'Apt::Ppa[ppa:facette/ppa]',
+                ensure: 'installed',
+                notify: 'Service[facette]',
+                require: 'Apt::Ppa[ppa:facette/ppa]',
             })}
 
             it { is_expected.to contain_shellvar('enable facette').with({
-                :ensure => 'present',
-                :target => '/etc/default/facette',
-                :variable => 'ENABLED',
-                :value => 'true',
-                :require => 'Package[facette]',
-                :notify => 'Service[facette]',
+                ensure: 'present',
+                target: '/etc/default/facette',
+                variable: 'ENABLED',
+                value: 'true',
+                require: 'Package[facette]',
+                notify: 'Service[facette]',
             })}
 
             it { is_expected.to contain_service('facette').with({
-                :ensure => 'running',
-                :enable => true,
+                ensure: 'running',
+                enable: true,
             })}
 
             it { is_expected.to contain_file('facette.json').with({
-                :ensure => 'file',
-                :path => '/etc/facette/facette.json',
-                :require => 'Package[facette]',
-                :notify => 'Service[facette]',
-                :owner => 'root',
-                :group => 'root',
-                :mode => '0644',
+                ensure: 'file',
+                path: '/etc/facette/facette.json',
+                require: 'Package[facette]',
+                notify: 'Service[facette]',
+                owner: 'root',
+                group: 'root',
+                mode: '0644',
             }).with_content(
                 /"bind": ".+"/
             ).with_content(
@@ -62,17 +62,17 @@ describe 'facette' do
         end
 
         context 'with package state set to purged' do
-            let(:params) { { :state => { 'package' => 'purged' } } }
+            let(:params) { { state: { 'package' => 'purged' } } }
             it { is_expected.to contain_package('facette').with_ensure('purged') }
         end
 
         context 'with service state set to stopped' do
-            let(:params) { { :state => { 'service' => 'stopped' } } }
+            let(:params) { { state: { 'service' => 'stopped' } } }
             it { is_expected.to contain_service('facette').with_ensure('stopped') }
         end
 
         context 'with config where base_dir is set to var' do
-            let(:params) { { :config => { 'base_dir' => '/var' } } }
+            let(:params) { { config: { 'base_dir' => '/var' } } }
             it { is_expected.to contain_file('facette.json').with_content(
                 /"bind": ".+"/
             ).with_content(
@@ -88,20 +88,20 @@ describe 'facette' do
 
         context 'with single provider' do
             let(:params) { {
-                :providers => { 'collectd' => {
+                providers: { 'collectd' => {
                     'connector' => {
                         'path' => '/var/lib/collectd/rrd',
                         'type' => 'rrd',
                 }}}
             }}
             it { is_expected.to contain_file('facette-collectd.json').with({
-                :ensure => 'file',
-                :path => '/etc/facette/providers/collectd.json',
-                :require => 'Package[facette]',
-                :notify => 'Service[facette]',
-                :owner => 'root',
-                :group => 'root',
-                :mode => '0644',
+                ensure: 'file',
+                path: '/etc/facette/providers/collectd.json',
+                require: 'Package[facette]',
+                notify: 'Service[facette]',
+                owner: 'root',
+                group: 'root',
+                mode: '0644',
             }).with_content(
                 /"connector":/
             ).with_content(
@@ -114,7 +114,7 @@ describe 'facette' do
 
         context 'with multiple providers' do
             let(:params) { {
-                :providers => {
+                providers: {
                 'collectd' => {
                     'connector' => {
                         'path' => '/var/lib/collectd/rrd',
@@ -127,13 +127,13 @@ describe 'facette' do
                 }}
             }}}
             it { is_expected.to contain_file('facette-collectd.json').with({
-                :ensure => 'file',
-                :path => '/etc/facette/providers/collectd.json',
-                :require => 'Package[facette]',
-                :notify => 'Service[facette]',
-                :owner => 'root',
-                :group => 'root',
-                :mode => '0644',
+                ensure: 'file',
+                path: '/etc/facette/providers/collectd.json',
+                require: 'Package[facette]',
+                notify: 'Service[facette]',
+                owner: 'root',
+                group: 'root',
+                mode: '0644',
             }).with_content(
                 /"connector":/
             ).with_content(
@@ -143,13 +143,13 @@ describe 'facette' do
             )
             }
             it { is_expected.to contain_file('facette-influxdb.json').with({
-                :ensure => 'file',
-                :path => '/etc/facette/providers/influxdb.json',
-                :require => 'Package[facette]',
-                :notify => 'Service[facette]',
-                :owner => 'root',
-                :group => 'root',
-                :mode => '0644',
+                ensure: 'file',
+                path: '/etc/facette/providers/influxdb.json',
+                require: 'Package[facette]',
+                notify: 'Service[facette]',
+                owner: 'root',
+                group: 'root',
+                mode: '0644',
             }).with_content(
                 /"connector":/
             ).with_content(
