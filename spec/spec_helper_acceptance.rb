@@ -3,8 +3,8 @@ require 'beaker-rspec/helpers/serverspec'
 
 hosts.each do |_host|
   # Install Puppet
-  install_puppet(      version: '4.2.3',
-                       puppet_agent_version: '1.2.7')
+  install_puppet(version: '4.2.3',
+                 puppet_agent_version: '1.2.7')
 end
 
 RSpec.configure do |c|
