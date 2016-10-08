@@ -1,12 +1,12 @@
 {
   "name": "puppet-facette",
   "version": "0.0.1",
-  "author": "puppet-community",
+  "author": "Vox Pupuli",
   "license": "Apache-2.0",
   "summary": "A module to manage Facette",
-  "source": "https://github.com/puppet-community/puppet-facette",
-  "project_page": "https://forge.puppetlabs.com/puppet/facette",
-  "issues_url": "https://github.com/puppet-community/puppet-facette/issues",
+  "source": "https://github.com/voxpupuli/puppet-facette.git",
+  "project_page": "https://github.com/voxpupuli/puppet-facette",
+  "issues_url": "https://github.com/voxpupuli/puppet-facette/issues",
   "operatingsystem_support": [
     {
       "operatingsystem": "Ubuntu",
