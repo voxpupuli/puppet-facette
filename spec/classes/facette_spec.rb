@@ -85,15 +85,15 @@ describe 'facette' do
       it do
         is_expected.to contain_file('facette.json').with_content(
           %r{"bind": ".+"}
-    ).with_content(
-      /"base_dir": "\/var"/
-    ).with_content(
-      %r{"providers_dir": ".+"}
-    ).with_content(
-      %r{"data_dir": ".+"}
-    ).with_content(
-      %r{"pid_file": ".+"}
-    )
+        ).with_content(
+          /"base_dir": "\/var"/
+        ).with_content(
+          %r{"providers_dir": ".+"}
+        ).with_content(
+          %r{"data_dir": ".+"}
+        ).with_content(
+          %r{"pid_file": ".+"}
+        )
       end
     end
 
