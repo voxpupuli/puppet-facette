@@ -86,7 +86,7 @@ describe 'facette' do
         is_expected.to contain_file('facette.json').with_content(
           %r{"bind": ".+"}
         ).with_content(
-          /"base_dir": "\/var"/
+          %r{"base_dir": "/var"}
         ).with_content(
           %r{"providers_dir": ".+"}
         ).with_content(
@@ -125,7 +125,7 @@ describe 'facette' do
         ).with_content(
           %r{"connector":}
         ).with_content(
-          /"path": "\/var\/lib\/collectd\/rrd"/
+          %r{"path": "/var/lib/collectd/rrd"}
         ).with_content(
           %r{"type": "rrd"}
         )
@@ -168,7 +168,7 @@ describe 'facette' do
         ).with_content(
           %r{"connector":}
         ).with_content(
-          /"path": "\/var\/lib\/collectd\/rrd"/
+          %r{"path": "/var/lib/collectd/rrd"}
         ).with_content(
           %r{"type": "rrd"}
         )
