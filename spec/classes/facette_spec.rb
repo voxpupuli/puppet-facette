@@ -8,13 +8,13 @@ describe 'facette' do
   describe 'on Ubuntu' do
     let(:facts) do
       {
-        'lsbdistcodename' => 'trusty',
-        'lsbdistrelease'      => '14.04',
-        'lsbmajdistrelease'   => '14.04',
-        'lsbdistdescription'  => 'Ubuntu 14.04.3 LTS',
-        'lsbdistid'           => 'Ubuntu',
-        :osfamily             => 'Debian',
-        :operatingsystem      => 'Ubuntu'
+        lsbdistcodename:     'trusty',
+        lsbdistrelease:      '14.04',
+        lsbmajdistrelease:   '14.04',
+        lsbdistdescription:  'Ubuntu 14.04.3 LTS',
+        lsbdistid:           'Ubuntu',
+        osfamily:            'Debian',
+        operatingsystem:     'Ubuntu'
       }
     end
 
