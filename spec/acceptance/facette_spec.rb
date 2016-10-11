@@ -3,7 +3,7 @@ require 'spec_helper_acceptance'
 describe 'facette class' do
   context 'default parameters' do
     # Using puppet_apply as a helper
-    it 'should work idempotently with no errors' do
+    it 'works idempotently with no errors' do
       pp = <<-EOS
         package { 'software-properties-common': ensure => latest }
         include apt
@@ -12,8 +12,8 @@ describe 'facette class' do
       EOS
 
       # Run it twice and test for idempotency
-      apply_manifest(pp, :catch_failures => true)
-      apply_manifest(pp, :catch_changes  => true)
+      apply_manifest(pp, catch_failures: true)
+      apply_manifest(pp, catch_changes: true)
     end
 
     describe package('facette') do
@@ -24,7 +24,7 @@ describe 'facette class' do
       it { should be_running }
     end
 
-    describe port(12003) do
+    describe port(12_003) do
       it { should be_listening }
     end
   end
