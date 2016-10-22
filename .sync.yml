@@ -1,5 +1,18 @@
 ---
 .travis.yml:
+  includes:
+  - rvm: 2.1.9
+    env: PUPPET_VERSION="~> 4.0" CHECK=test
+  - rvm: 2.2.5
+    env: PUPPET_VERSION="~> 4.0" CHECK=test
+  - rvm: 2.3.1
+    env: PUPPET_VERSION="~> 4.0" CHECK=build DEPLOY_TO_FORGE=yes
+  - rvm: 2.3.1
+    env: PUPPET_VERSION="~> 4.0" CHECK=rubocop
+  - rvm: 2.3.1
+    env: PUPPET_VERSION="~> 4.0" CHECK=test
+  - rvm: 2.4.0-preview1
+    env: PUPPET_VERSION="~> 4.0" CHECK=test
   secure: "TQIJuEAqgRpwv/nBrJwZziOuLohxsA6+mH6J1VD6ld6CAwpbrW3p0wn6UE/72SdWBPuoV3FxoXQHRZKoZLG6CKxbvFJ4+XpVN5g/LFNU6AxRHC5SlZA2Ushmyo8EAUjUZqCBI/vpJD0vfHmIU6p9cTdZOqWyR49tMSxAUikQQ/cr+r/bMFU3WFNRNOdULhhHtNQRXHZKaOr5fFBuBlKDk2SrVRSzHCq4wUKooOJUsX0C4f90SZ5p22bWKvHTce7hmZ6GioZ1sEEgr/1I09ZGmAq3w0mo0llAa8mZKqqTx20rlVE96G9bIx9X6fNzXnDiGYW2EY0JNNC1pQkjnKRnF9752/Z7UKdGymyqrtZlMFsUViF5wQ3pcrmcWwObDdGHu2PYqqtSYbHJPnDHlLUL9qR/8pGZgQSbpFWynHpmqt4qXIFNqZ2TPPoc3n5EOf2IYgSuKaIYISszDhUQaCC/5rl7ojlNVfAX2tCMeWPY/ihhDdOLTg3yGutF2KCoyH6u+edYEd4L5hLRmetzrNjgwI6WnAiES9XGGDOaGVHTrn7KrvpFg8R9D7FZgAAM+0QAT4/MhOcvMHk2qNbbS2wWHHBMxqaXniF2YuM2sJxL6a8iZxLUXuUaE1TtrH7hZNIPIx5p+BDZ9AVobvQ8n/Q8vJ45AKxK9uKyN555nBE2z8s="
 Rakefile:
   exclude_paths:
