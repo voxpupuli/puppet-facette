@@ -17,15 +17,15 @@ describe 'facette class' do
     end
 
     describe package('facette') do
-      it { should be_installed }
+      it { is_expected.to be_installed }
     end
 
     describe service('facette') do
-      it { should be_running }
+      it { is_expected.to be_running }
     end
 
     describe port(12_003) do
-      it { should be_listening }
+      it { is_expected.to be_listening }
     end
   end
 end
