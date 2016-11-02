@@ -20,6 +20,9 @@ describe 'facette' do
 
     context 'defaults' do
       it { is_expected.to contain_apt__ppa('ppa:facette/ppa') }
+      it { is_expected.to contain_class('facette') }
+      it { is_expected.to contain_class('facette::params') }
+      it { is_expected.to compile.with_all_deps }
 
       it do
         is_expected.to contain_package('facette').with(
