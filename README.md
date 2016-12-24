@@ -1,6 +1,6 @@
 # Facette
 
-This module works only with Puppet 3.7+ with the future parser enabled or
+This module works only with Puppet 3.8.7 with the future parser enabled or
 Puppet 4.
 
 ## Module description
