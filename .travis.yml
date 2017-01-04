@@ -28,7 +28,7 @@ matrix:
   - rvm: 2.4.0-rc1
     env: PUPPET_VERSION="~> 4.0" CHECK=test
   allow_failures:
-    - rvm: 2.4.0-rc1
+    - rvm: 2.4.0
 branches:
   only:
   - master
