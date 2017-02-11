@@ -1,6 +1,6 @@
 {
   "name": "puppet-facette",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Vox Pupuli",
   "license": "Apache-2.0",
   "summary": "A module to manage Facette",
@@ -16,7 +16,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 3.8.7 < 4.0.0"
+      "version_requirement": ">= 4.6.1 < 4.0.0"
     }
   ],
   "dependencies": [
