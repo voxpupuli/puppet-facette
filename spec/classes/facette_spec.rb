@@ -75,16 +75,19 @@ describe 'facette' do
 
     context 'with package state set to purged' do
       let(:params) { { state: { 'package' => 'purged' } } }
+
       it { is_expected.to contain_package('facette').with_ensure('purged') }
     end
 
     context 'with service state set to stopped' do
       let(:params) { { state: { 'service' => 'stopped' } } }
+
       it { is_expected.to contain_service('facette').with_ensure('stopped') }
     end
 
     context 'with config where base_dir is set to var' do
       let(:params) { { config: { 'base_dir' => '/var' } } }
+
       it do
         is_expected.to contain_file('facette.json').with_content(
           %r{"bind": ".+"}
@@ -116,6 +119,7 @@ describe 'facette' do
           }
         }
       end
+
       it do
         is_expected.to contain_file('facette-collectd.json').with(
           ensure: 'file',
@@ -159,6 +163,7 @@ describe 'facette' do
           }
         }
       end
+
       it do
         is_expected.to contain_file('facette-collectd.json').with(
           ensure: 'file',
@@ -208,6 +213,7 @@ describe 'facette' do
         operatingsystem:    'Ubuntu'
       }
     end
+
     it do
       expect { subject.call }.to raise_error(Puppet::Error, %r{This module only supports Ubuntu})
     end
