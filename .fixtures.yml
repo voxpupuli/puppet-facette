@@ -4,5 +4,3 @@ fixtures:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib"
     augeasproviders_core: "https://github.com/hercules-team/augeasproviders_core"
     shellvar: "https://github.com/hercules-team/augeasproviders_shellvar"
-  symlinks:
-    facette: "#{source_dir}"
