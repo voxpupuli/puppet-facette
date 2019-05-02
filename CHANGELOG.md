@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.0.0](https://github.com/voxpupuli/puppet-facette/tree/v2.0.0) (2019-04-30)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-facette/compare/v1.1.2...v2.0.0)
+
+**Breaking changes:**
+
+- modulesync 2.7.0 and drop puppet 4 [\#37](https://github.com/voxpupuli/puppet-facette/pull/37) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- Allow puppetlabs/apt 7.x [\#38](https://github.com/voxpupuli/puppet-facette/pull/38) ([dhoppe](https://github.com/dhoppe))
+
 ## [v1.1.2](https://github.com/voxpupuli/puppet-facette/tree/v1.1.2) (2018-10-20)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-facette/compare/v1.1.1...v1.1.2)
