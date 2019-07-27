@@ -6,8 +6,8 @@ class facette (
 
   apt::ppa { 'ppa:facette/ppa': }
 
-  $_config = merge($::facette::config_defaults, $config)
-  $_state = merge($::facette::state_defaults, $state)
+  $_config = merge($facette::config_defaults, $config)
+  $_state = merge($facette::state_defaults, $state)
   $_file_opts = { 'owner' => 'root', 'group' => 'root', 'mode' => '0644' }
 
   package { 'facette':
