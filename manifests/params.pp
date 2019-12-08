@@ -1,5 +1,5 @@
 class facette::params {
-  if $::lsbdistid != 'Ubuntu' {
+  if $facts['os']['name'] != 'Ubuntu' {
     fail('This module only supports Ubuntu')
   }
 
