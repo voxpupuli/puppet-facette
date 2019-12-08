@@ -15,7 +15,6 @@ exclude_paths = %w(
   vendor/**/*
   .vendor/**/*
   spec/**/*
-  templates/*.json.erb
 )
 PuppetLint.configuration.ignore_paths = exclude_paths
 PuppetSyntax.exclude_paths = exclude_paths

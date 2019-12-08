@@ -33,7 +33,7 @@ class facette (
   file { 'facette.json':
     ensure  => file,
     path    => '/etc/facette/facette.json',
-    content => template('facette/facette.json.erb'),
+    content => to_json_pretty($_config),
     require => Package['facette'],
     notify  => Service['facette'],
     *       => $_file_opts,
@@ -44,7 +44,7 @@ class facette (
       file { "facette-${provider}.json":
         ensure  => file,
         path    => "/etc/facette/providers/${provider}.json",
-        content => template('facette/provider.json.erb'),
+        content => to_json_pretty($conf),
         require => Package['facette'],
         notify  => Service['facette'],
         *       => $_file_opts,
