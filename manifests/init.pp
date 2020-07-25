@@ -3,7 +3,6 @@ class facette (
   Optional[Hash[String, Hash]] $providers = undef,
   Optional[Hash] $state = undef,
 ) inherits facette::params {
-
   apt::ppa { 'ppa:facette/ppa': }
 
   $_config = merge($facette::config_defaults, $config)
