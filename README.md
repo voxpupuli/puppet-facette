@@ -1,5 +1,7 @@
 # Facette
 
+:warning: This module is declared as deprecated by Vox Pupuli, see [#56](https://github.com/voxpupuli/puppet-facette/issues/56). :warning:
+
 This module works only with Puppet 3.8.7 with the future parser enabled or
 Puppet 4.
 
